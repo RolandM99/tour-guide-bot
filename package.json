@@ -1,0 +1,25 @@
+{
+  "name": "tour-guide-bot",
+  "version": "1.0.0",
+  "description": "A tour guide bot that helps users to visit different place in kigali",
+  "main": "index.js",
+  "author": "Roland Mweze",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.2.3",
+    "@types/node-telegram-bot-api": "^0.61.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.0",
+    "node-telegram-bot-api": "^0.61.0",
+    "telegraf": "^4.12.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "start": "ts-node-dev -r dotenv/config index.ts",
+    "dev": "ts-node-dev  -r dotenv/config  src/main.ts"
+  }
+}
