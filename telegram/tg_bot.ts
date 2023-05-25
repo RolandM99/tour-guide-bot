@@ -1,6 +1,6 @@
 import { Telegraf } from 'telegraf';
-import { config } from '../config/config';
-import { connectDB } from '../config/db.config';
+// import { config } from '../config/config';
+// import { connectDB } from '../config/db.config';
 
 /*
 @@Author: Roland Mweze
@@ -10,7 +10,7 @@ TODO:
 3. Implement the bot logic with a friendly interface using the Telegraf library
 */
 
-connectDB();
+
 
 
 

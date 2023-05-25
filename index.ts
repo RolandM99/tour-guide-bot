@@ -1,8 +1,9 @@
-import { connectDB } from "./config/db.config";
+import { connectDB } from "./app/config/db.config"
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
+
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -12,6 +13,7 @@ connectDB();
 
 app.use(cors(corsOptions));
 
+
 // parse requests of content-type - application/json
 app.use(express.json());
 
@@ -19,12 +21,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req: any, res: { json: (arg0: { message: string; }) => void; }) => {
+app.get("/", (req: any, res: any ) => {
   res.json({ message: "Welcome to the guide-tour application." });
 });
 
+require("./app/routes/place.routes")(app);
+
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

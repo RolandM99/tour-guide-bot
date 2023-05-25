@@ -20,6 +20,6 @@
   },
   "scripts": {
     "start": "ts-node-dev -r dotenv/config index.ts",
-    "dev": "ts-node-dev  -r dotenv/config  src/main.ts"
+    "dev": "ts-node-dev  -r dotenv/config  main.ts"
   }
 }
