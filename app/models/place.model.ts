@@ -6,6 +6,8 @@ module.exports = (mongoose : any ) => {
           name: String,
           description: String,
           location: String,
+          about: String,
+          maps: String,
           open_hour: String,
           close_hour: String,
         },

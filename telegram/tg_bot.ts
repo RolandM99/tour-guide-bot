@@ -8,17 +8,10 @@ const Telegraf = require("telegraf");
 connectDB();
 require("dotenv").config();
 
-// interface placeState {
-//     placeCategory: string;
-//     placeId: string;
-//     placeName: string;
-//     placeDescription: string;
-// };
-
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN!);
 const state: Record<string, any> = {};
 
-const placeCategory = ['Hotel 🏨', 'Restaurant/Bar 🍲', 'Park 🏞️', 'Church ⛪', 'Mosque 🕌', 'Cinema 🎥', 'Theater 🎭', 'Stadium 🏟️', 'Tourism Park 🎢', 'Library 📚', 'Night Club 🎆', 'Coffee Shop ☕', 'Supermarket 🏪', 'Hospital 🏥', 'Bank 🏦', 'University 🎓', 'Florist 🌹']
+const placeCategory = ['Hotel 🏨', 'Restaurant/Bar 🍲', 'Church ⛪', 'Mosque 🕌', 'Cinema 🎥', 'Theater 🎭', 'Stadium 🏟️', 'Tourism Park 🎢', 'Library 📚', 'Night Club 🎆', 'Coffee Shop ☕', 'Supermarket 🏪', 'Hospital 🏥', 'Bank 🏦', 'University 🎓', 'Florist 🌹']
 
 const placesUrl = 'http://localhost:3002/api/places/all';
 
@@ -94,10 +87,21 @@ export const tgWrapper = () => {
         state[ctx.from.id].placeId = placeId;
         const place = await fetch(placesUrl).then((res: any) => res.json());
         const placeDetails = place.filter((place: any) => place._id === placeId);
-        console.log(placeDetails);
+
+        let message = `🔖 <b>${placeDetails[0].name}</b> 🔖 \n\n`;
+        message += `📍 <b>Location:</b> ${placeDetails[0].location} \n\n`;
+        message += `📝 <b>Description:</b> ${placeDetails[0].description} \n\n`;
+        message += `🕒 <b>Open Hour:</b> ${placeDetails[0].open_hour} \n\n`;
+        message += `🕒 <b>Close Hour:</b> ${placeDetails[0].close_hour} \n\n`;
+        message += `<b>About:</b> \n\n`;
+        message += `${placeDetails[0].about} \n\n`;
+
+        message += ` check out the place on google map: \n`;
+        message += ` 👉 <a href="${placeDetails[0].maps}">Click here</a> \n\n`
+
         ctx.reply(
-            `🔖 *${placeDetails[0].name}* 🔖 \n\n📍 *Location:* ${placeDetails[0].location} \n\n📝 *Description:* ${placeDetails[0].description} \n\n 🕒 *Open Hour:* ${placeDetails[0].open_hour} \n\n 🕒 *Close Hour:* ${placeDetails[0].close_hour}`
-            , { parse_mode: "Markdown" }
+            message
+            , { parse_mode: "HTML" }
         );
     });
 }

@@ -14,6 +14,8 @@ exports.create = (req:any, res:any) => {
         name: req.body.name,
         description: req.body.description,
         location: req.body.location,
+        about: req.body.about,
+        maps: req.body.maps,
         open_hour: req.body.open_hour,
         close_hour: req.body.close_hour,
     })
