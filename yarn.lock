@@ -1128,7 +1128,7 @@ mongodb@5.5.0:
   optionalDependencies:
     saslprep "^1.0.3"
 
-mongoose@^7.2.2:
+mongoose@^7.2.0:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-7.2.2.tgz#5e4c9b87f20b0ef74382706da810bad292fa0f03"
   integrity sha512-JPBMTF+oYfLGVFWbHSZ/H+f1GajNanGLYH6c/P0nE3bNJfwGhX573vieGR0kNlNhj3cZk8WCPrnVsTNeUmFUag==
